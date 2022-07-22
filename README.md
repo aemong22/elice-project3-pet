@@ -110,19 +110,21 @@ ai 종 분석 페이지에 먼저 들어가게 되면 고양이와 강아지 중
 # 5. AI Model 및 배포
 - 사용한 라이브러리 : pandas, sicklt-learn, tensorlow, keras, flask
 > 데이터 선정 및 전처리
-- Oxford, Stanford에서 제공해주는 이미지 및 구글사진에서 이미지 크롤링을 통해 강이지(26,081) 및 고양이(2,787) 이미지 데이터를 수집
+- Oxford, Stanford에서 제공해주는 이미지 및 구글사진에서 이미지 크롤링을 통해(삽살개, 진돗개) 강아지(26,081) 및 고양이(2,787) 이미지 데이터를 수집
 - 이미지의 수를 증가시키기 위해 각각 이미지의 좌우반전을 통해 이미지 증대를 활용
 - 분류의 종에 비해 이미지가 작기 때문에, 섬세한 이미지 분류를 위해 기존 이미지 사이즈 200~300 $\times$ 200~300에서 300 $\times$ 300의 전처리를 진행
 - Test Set은 각각의 종마다 20개의 구글사진에서 이미지 크롤링을 통해 수집을 진행
 - 총 127종의 강아지와 13종의 고양이를 구별하는 두개의 모델을 만들어 제공
 
+
 > CNN 모델 선정 및 Hyperparameter 선택
-- GPU가 없는 VM에 작동을위해 속도를 고려하여 Fine tuning할 모델을 선정
+- GPU가 없는 VM에 작동을위해 속도를 고려하여, Fine tuning할 모델을 선정
 - EfficientNetV2S에서 imagenet weight을 가지고와 사용
-   - ref : https://arxiv.org/abs/2104.00298
-- 섬세한 분류를 위해 Input layer를 (300,300,3)으로 변경하고, 마지막 layer에 Global average pooling layer, dropout layer(0.5) 및 softmax layer를 추가적으로 연결
-- Overfiting 방지 및 효과적인 학습을 위한 reduce learning rate 및 early stopping을 사용
-- SGD(momentum=0.5)의 optimizer을 사용하여 initial learning rate = 0.01로 시작하여 $10^{-6}$까지 감소시켰다.
+    - ref : [https://arxiv.org/abs/2104.00298](https://arxiv.org/abs/2104.00298)
+- 기존 127종의 이미지를 세분화 하여 분류하기 위해 기존의 input layer를  (300,300,3)으로 변경하였다. 그리고 마지막 layer에 Global average pooling layer, dropout layer(0.5) 및 softmax layer를 추가적으로 연결
+- Overfitting 방지 및 효과적인 학습을 위한 reduce learning rate 및 early stopping을 사용
+- SGD(momentum=0.5)의 optimizer을 사용하여 initial learning rate = 0.01로 시작하여 $0.0000001$까지 감소시켰다.
+
 
 > 모델 훈련 및 평가
 - 강아지 모델 훈련 결과
@@ -308,9 +310,15 @@ British Shorthair       0.89      1.00      0.94        24
    - 우리 모델의 문제점 어린 강아지의 종 분류에 있어서 어려움이 생겼다.
    - 믹스견일 경우 부모의 종 발현이 높은쪽의 결과가 나왔다.
 
-> 회고
-- 사용하는 VM환경에서 GPU를 사용할 수 없기 떄문에 깊은 레이어의 모델을 사용하지 못해 아쉬웠지만, 개발한 모델의 성능이 괜찮았다.
+> 결과분석
+- 우리 모델의 문제점 어린 강아지의 종 분류에 있어서 어려움이 생겼다.
+- 믹스견일 경우 부모의 종 발현이 높은 쪽의 결과가 나왔다.
+- 또한 애완동물의 악세사리 착용 시, 악세사리를 반영한 종 분석 결과가 나왔다.
+- 고양이의 종 분석은 모든 종이 좋은 분류 결과를 보여줬고,  강아지 분류모델은 3-4종을 제외하고 좋은 분류결과를 제공한다.
+- Input layer를 기존의 fine-tuning모델과는 다르게 훈련된 이미지 크기보다 크게 설정하여 다양한 종을 분석에 있어 효과적인 성능을 보인다는 것을 확인할 수 있었다. (여기서, optimize을 Adam으로 사용할 경우 vanishing gradient로 인해 input layer까지 훈련이 안되는 것을 확인 했고, 이로 인해 SGD를 사용하여 훈련을 진행하였다.)
+- 사용하는 VM환경에서 GPU를 사용할 수 없기 때문에 깊은 레이어 모델을 사용하지 못해 아쉬웠지만, 개발한 모델의 성능이 사용가능하다고 판단했다.
 - GPU 사용시간이 적어, 다양한 fine-grained classification 모델을 적용을 못해 아쉬웠다.
+
 
 > 모델 서빙을 위한 flask 서버 구축
 - post 요청으로 받아온 이미지 전처리 
