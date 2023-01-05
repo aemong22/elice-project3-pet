@@ -71,26 +71,27 @@ https://www.figma.com/file/XlIUDZhngBm4CjGvSymuBg/%EA%B6%81%EA%B8%88%ED%95%98%EB
 <br/>
 
 ### 서비스 구조도
-![image](/uploads/65aab238e2ceb41e6b7ee092ff84184b/image.png)
+![image](https://user-images.githubusercontent.com/55730504/210717395-31790cad-97b3-44d7-be25-031b925edd39.png)
+
 
 -------------------------------------
 ### Home
-![MAIN캡처](/uploads/b326aca20b196fb4e4094be7b69eea38/MAIN캡처.JPG)
+![image](https://user-images.githubusercontent.com/55730504/210717294-41cd45ad-eb70-44ce-993d-49ee4d5c4028.png)
 HOME 화면에 접속하면 궁금하냥 서비스에 대한 소개를 볼 수 있습니다.
 
 ### 우리동네 지도 페이지
-![MAP](/uploads/d6fb334f891fb112c2e296b56ccb21ac/MAP.jpg)
+![image](https://user-images.githubusercontent.com/55730504/210717436-5514bfad-3abc-4981-83f5-4f7c34624c55.png)
 kakao map을 이용해 사용자 위치를 기반으로 주변에 있는 반려동물 관련 장소를 확인할 수 있습니다. <br/>
 반려동물의 산책로, 병원, 카페, 미용실 메뉴를 선택하여 원하는 정보를 찾아볼 수 있습니다. <br/>
 하트를 누른 장소는 사용자의 MY PAGE에서 모아볼 수 있습니다. <br/>
 
 ### 백과사전 페이지
-![백과사전_페이지](/uploads/6667a99fcc70dd50115b437644797f80/백과사전_페이지.JPG)
+![image](https://user-images.githubusercontent.com/55730504/210717719-749c465c-2d73-419d-8b46-421652fb3948.png)
 127종의 강아지와 13종의 고양이에 대한 정보를 제공하여 사용자들은 다양한 종에 대한 정보를 얻을 수 있습니다.
 
 
 ### AI 종 분석 페이지
-![AI_종분석_첫페이지](/uploads/cd2025440a6209d4c55014b27eafdf2e/AI_종분석_첫페이지.JPG)
+![image](https://user-images.githubusercontent.com/55730504/210717765-b058cfe6-3137-426b-a0f2-c755d203bd93.png)
 ai 종 분석 페이지에 먼저 들어가게 되면 고양이와 강아지 중 분석할 동물을 고를 수 있습니다.
 그리고 그 밑에 백과사전으로 갈 수 있는 버튼도 구현되어있습니다.
 <br/>
@@ -98,12 +99,12 @@ ai 종 분석 페이지에 먼저 들어가게 되면 고양이와 강아지 중
 
 
 ### 알쓸펫잡 페이지
-![게시판3](/uploads/1cd285b92dcb0e3c4917cd0c31059f66/게시판3.JPG)
+![image](https://user-images.githubusercontent.com/55730504/210717816-95ee6922-cf04-4c37-840f-9b2114ce1fa0.png)
 알쓸펫잡 페이지는 게시글을 검색할 수도 있으며, 최신순, 조회순, 좋아요 순으로 정렬 할 수 있습니다.
 페이지네이션을 구현하였고, 글쓰기 기능, 글 수정 기능, 글 삭제 기능, 댓글 기능, 댓글 수정기능, 댓글 삭제 기능, 좋아요 누르기 기능이 구현되어있습니다.
 
 ### MyPage
-![MYPAGE1](/uploads/c03da918a74d7c8b9e3fbf111513948e/MYPAGE1.JPG)
+![image](https://user-images.githubusercontent.com/55730504/210717847-4a420f81-76e4-47cf-a250-7e81010f9dce.png)
 마이페이지를 통해 사용자는 회원정보를 수정하거나, 찜한 장소를 볼 수 있습니다.
 
 
